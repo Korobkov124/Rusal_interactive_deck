@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+#Personal_account {
+    background-color: #EADDFF;
+    padding: 20px;
+    border-radius: 20px;
+    
+}
+
+#right_header{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+h1{
+    text-align: center;
+    font-family: 'Source Serif 4';
+    color: #4F378A;
+    font-weight: 700;
+    font-size: 50px;
+    margin-top: 0;
+}
+
+p{
+    font-family: 'Source Serif 4';
+    color: #4F378A;
+    font-weight: 700;
+    font-size: 30px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.input-group {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.input-group p {
+    margin: 0;
+    width: 150px;
+}
+
+.button_group{
+    display: flex;
+    justify-content: space-between;
+}
+
+.inptype:hover{
+    background-color: #ae82f6;;
+}
+
+button{
+    margin-top: 20px;
+    width: 150px;
+    height: 40px;
+    border: none;
+    outline: none;
+    background-color: #65558F;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+button:hover{
+    background-color: #5b4397;
+}
+
+.inptype {
+    flex-grow: 1;
+    width: calc(70% - 30px);
+    margin: 0 20px; 
+    padding: 10px; 
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background-color: #CCACFF;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+}

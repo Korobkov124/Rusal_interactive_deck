@@ -37,6 +37,12 @@ p{
     margin-bottom: 0;
 }
 
+#right_header{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
 .auth_input{
     width: calc(100% - 40px);
     margin: 0 20px; 
