@@ -1,0 +1,92 @@
+body{
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#auth_form{
+    background-color: #EADDFF;
+    border-radius: 20px;
+    width: 50%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    padding: 15px;
+}
+
+h1{
+    font-family: 'Source Serif 4';
+    color: #4F378A;
+    font-weight: 700;
+    font-size: 40px;
+    margin-top: 0;
+}
+
+p{
+    font-family: 'Source Serif 4';
+    color: #4F378A;
+    font-weight: 700;
+    font-size: 20px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#right_header{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.auth_input{
+    width: calc(80% - 40px);
+    margin: 0 20px; 
+    padding: 10px; 
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    background-color: #CCACFF;
+    border-radius: 20px;
+    color: white;
+    font-size: 16px;
+}
+
+.auth_input:hover{
+    background-color: #ae82f6;
+}
+
+#auth_button_sign_in{
+    margin-top: 20px;
+    width: 350px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: #65558F;
+    border-radius: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+}
+
+#auth_button_sign_in:hover{
+    background-color: #5b4397;
+}
+
+#auth_button_sign_out{
+    margin-top: 20px;
+    width: 350px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 15px;
+}
+
+#auth_button_sign_out:hover{
+    color: #5b4397;
+}
