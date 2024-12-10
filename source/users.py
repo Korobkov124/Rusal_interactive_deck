@@ -30,6 +30,8 @@ def get_password(username):
 
 @app.route('/users', methods=['POST'])
 def create_user():
+    if any(x['id'] == request.json['id'] for x in users):
+        abort(400)
     users.append({'id': request.json['id'],
                   'username': request.json['username'],
                   'name': request.json['name'],

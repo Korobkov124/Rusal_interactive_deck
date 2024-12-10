@@ -1,16 +1,29 @@
 from flask import Flask
 import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from mysql.connector import connect, Error
 
 app = Flask(__name__)
 
+def connect_db():
+    try:
+        with connect(
+            host="localhost",
+            user='admin',
+            password='admin',
+        ) as connection:
+            create_db_query = "CREATE DATABASE main_db"
+            with connection.cursor(dictionary=True) as cursor:
+                cursor.execute(create_db_query)
+    except Error as e:
+        print(f"The error '{e}' occurred")
 
-timedelta = [{
+booking = [{
     "id": 0,
     "id_owner": 0,
     "coworking": 1,
     "time_start": datetime.datetime.now(),
-    "time_end": datetime.datetime.now(),
+    "time_end": datetime.datetime.now() + datetime.timedelta(days=1),
     "active": True
 },
 {
