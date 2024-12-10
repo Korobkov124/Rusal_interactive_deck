@@ -1,7 +1,9 @@
 from flask import Flask
 import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
+
 
 timedelta = [{
     "id": 0,
@@ -22,17 +24,22 @@ timedelta = [{
 
 users = [
     {'id': 0,
+     'username': 'admin',
      'name': 'admin',
      'tg': '@admin',
      'number': '+7(999)999-99-99',
      'email': 'admin@admin.ru',
      'active': True,
-     'role': 'admin'},
+     'role': 'admin',
+     'password': generate_password_hash('admin')},
+
     {'id': 1,
      'name': 'test',
+     'username': 'test',
      'tg': '@test',
      'number': '+7(888)888-88-88',
      'email': 'test@test.ru',
      'active': True,
-     'role': 'user'}, 
+     'role': 'user',
+     'password': generate_password_hash('test')}, 
 ]
