@@ -1,6 +1,8 @@
 from users import app, jsonify, abort, request, auth
 from data import booking, users
+
 import datetime
+
 
 
 @app.route('/booking', methods=['GET'])
@@ -8,6 +10,7 @@ import datetime
 def get_bookings():
     return_booking = list(filter(lambda x: x['active'] == True, booking))
     return jsonify({"response": return_booking})
+
 
 @app.route('/booking/free', methods=['GET'])
 def get_free_bookings():
