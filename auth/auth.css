@@ -46,6 +46,12 @@ p{
     outline: none;
     background-color: #CCACFF;
     border-radius: 20px;
+    color: white;
+    font-size: 16px;
+}
+
+.auth_input:hover{
+    background-color: #ae82f6;
 }
 
 #auth_button_sign_in{
@@ -62,14 +68,7 @@ p{
 }
 
 #auth_button_sign_in:hover{
-    margin-top: 20px;
-    width: 350px;
-    height: 30px;
-    border: none;
-    outline: none;
     background-color: #5b4397;
-    border-radius: 20px;
-    color: white;
 }
 
 #auth_button_sign_out{
