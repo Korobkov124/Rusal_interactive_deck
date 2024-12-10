@@ -82,12 +82,5 @@ p{
 }
 
 #auth_button_sign_out:hover{
-    margin-top: 20px;
-    width: 350px;
-    height: 30px;
-    border: none;
-    outline: none;
-    background-color: transparent;
-    font-size: 15px;
     color: #5b4397;
 }
