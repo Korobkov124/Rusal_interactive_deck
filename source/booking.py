@@ -1,6 +1,7 @@
 from users import app, jsonify, abort, request, auth
 from data import booking, users, connect_db
 import datetime
+from xlsxwriter import Workbook
 
 
 @app.route('/booking', methods=['GET'])
@@ -42,7 +43,7 @@ def delete_booking(id):
 def create_booking():
     booking.append({'id': booking[-1]["id"] + 1,
                       'id_owner': list(filter(lambda x: x['username'] == auth.current_user(), users))[0]['id'],
-                      'coworking': request.json['coworking'], 
+                      'coworking_id': request.json['coworking_id'], 
                       'time_start': request.json['time_start'],
                       'time_end': request.json['time_end'],
                       'active': True,
@@ -66,6 +67,32 @@ def update_booking(id):
     with connect_db() as connection:
         cursor = connection.cursor()
         sql = f"UPDATE booking SET {', '.join([f'{key} = ?' for key in x[0].keys()])} WHERE id = ?"
-        cursor.execute(sql, list(x[0].values())[:-1] + [id])
+        print(sql, list(x[0].values()) + [id])
+        cursor.execute(sql, list(x[0].values()) + [id])
         connection.commit()
     return jsonify({'response': 'ok'})
+
+@app.route('/booking/stats', methods=['GET'])
+def get_stats():
+    start = datetime.datetime.now() - datetime.timedelta(days=30)
+    end = datetime.datetime.now()
+    stats = list(filter(lambda x: datetime.datetime.strptime(x['time_start'], "%Y-%m-%d %H:%M") > start and datetime.datetime.strptime(x['time_end'], "%Y-%m-%d %H:%M") < end, booking))
+    booked = {}
+    for event in stats:
+        if event['coworking_id'] not in booked.keys():
+            booked[event['coworking_id']] = [0, datetime.timedelta(0)] #number, sum
+        booked[event['coworking_id']][0] += 1
+        booked[event['coworking_id']][1] += datetime.datetime.strptime(event['time_end'], "%Y-%m-%d %H:%M") - datetime.datetime.strptime(event['time_start'], "%Y-%m-%d %H:%M")
+    workbook = Workbook('stats.xlsx')
+    worksheet = workbook.add_worksheet()
+    for key in booked.keys():
+        worksheet.write(key, 0, key)
+        worksheet.write(key, 1, booked[key][0])
+        worksheet.write(key, 2, str(booked[key][1]))
+    workbook.close()
+
+    return jsonify({"response": "ok"})
+
+@app.route('/recomendation', methods=['POST'])
+def get_recomendation():
+    number_of_humans = request.json['']
