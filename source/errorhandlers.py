@@ -1,22 +1,17 @@
-from users import app, make_response, jsonify
-
-users = [
-    {'id': 0,
-     'name': 'admin',
-     'tg': '@admin',
-     'number': '+7(999)999-99-99',
-     'email': 'admin@admin.ru',
-     'active': True,
-     'role': 'admin'},
-    {'id': 1,
-     'name': 'test',
-     'tg': '@test',
-     'number': '+7(888)888-88-88',
-     'email': 'test@test.ru',
-     'active': True,
-     'role': 'user'}, 
-]
+from users import app, make_response, jsonify, auth
 
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'response': 'Not found'}), 404)
+
+@app.errorhandler(400)
+def bad_request(error):
+    return make_response(jsonify({'response': 'Bad request'}), 400)
+
+@auth.error_handler
+def unauthorized():
+    return make_response(jsonify({"response": "Unathorized access"}), 403)
+
+@app.errorhandler(500)
+def internal_error(error):
+    return make_response(jsonify({"response": "Internal error"}), 500)
