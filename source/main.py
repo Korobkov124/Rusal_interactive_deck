@@ -1,6 +1,6 @@
 from users import app, make_response, jsonify, update_user, get_user, delete_user, create_user, auth
 from errorhandlers import not_found, bad_request, unauthorized
-from timedelta import get_booking, get_bookings, create_booking, delete_booking, update_booking
+from booking import get_booking, get_bookings, create_booking, delete_booking, update_booking
 from data import *
 
 
